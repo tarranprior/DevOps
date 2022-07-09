@@ -1,5 +1,5 @@
 $USER_LIST = Get-Content .\names.txt
-New-ADOrganizationalUnit -Name _USERS -ProtectedFromAccidentalDeletion $false
+New-ADOrganizationalUnit -Name "PowerShell Users" -ProtectedFromAccidentalDeletion $false
 
 foreach ($n in $USER_LIST) {
     $first = $n.Split(" ")[0]
@@ -10,12 +10,13 @@ foreach ($n in $USER_LIST) {
     New-AdUser -AccountPassword $password `
                -GivenName $first `
                -Surname $last `
-               -DisplayName $username `
-               -Name $username `
+               -DisplayName $n `
+               -Name $n `
+               -SamAccountName $username `
                -EmployeeID $username `
                -PasswordNeverExpires $true `
-               -Path "ou=_USERS,$(([ADSI]`"").distinguishedName)" `
+               -Path "ou=PowerShell Users,$(([ADSI]`"").distinguishedName)" `
                -Enabled $true
 
-    Write-Host "User account: $($username) is now active."
+    Write-Host "$n (User Account: $username) is now active."
 }
