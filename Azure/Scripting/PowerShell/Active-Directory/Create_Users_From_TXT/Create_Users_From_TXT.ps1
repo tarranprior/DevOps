@@ -1,13 +1,18 @@
-$USER_LIST = Get-Content .\names.txt
-New-ADOrganizationalUnit -Name "PowerShell Users" -ProtectedFromAccidentalDeletion $false
+# Get contents of text file and store names in a new variable called "USER_LIST".
+$NAMES_LIST = Get-Content .\Names.txt
 
-foreach ($n in $USER_LIST) {
+# Create an OU for new users.
+New-ADOrganizationalUnit -Name "New Users" -ProtectedFromAccidentalDeletion $false
+
+# Enumerate through the list of users.
+foreach ($n in $NAMES_LIST) {
     $first = $n.Split(" ")[0]
     $last = $n.Split(" ")[1]
     $username = "$($first.Substring(0,1))$($last)".ToLower()
     $password = ConvertTo-SecureString "!password1" -AsPlainText -Force
 
-    New-AdUser -AccountPassword $password `
+    # Create user account with given properties.
+    New-ADUser -AccountPassword $password `
                -GivenName $first `
                -Surname $last `
                -DisplayName $n `
@@ -15,8 +20,9 @@ foreach ($n in $USER_LIST) {
                -SamAccountName $username `
                -EmployeeID $username `
                -PasswordNeverExpires $true `
-               -Path "ou=PowerShell Users,$(([ADSI]`"").distinguishedName)" `
+               -Path "OU=New Users,$(([ADSI]`"").distinguishedName)" `
                -Enabled $true
 
+    #  Print output to the terminal.
     Write-Host "$n (User Account: $username) is now active."
 }
