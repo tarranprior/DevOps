@@ -11,10 +11,10 @@ For example, the name "John Smith" creates an account with the credentials:
 This was written as part of a [blog post](http://tarranprior.com/writing/aduser-automate-active-directory-user-operations-using-powershell).
 
 ### Usage
-1. Clone both files into a directory of your choice.
+1. Clone the files into a directory of your choice.
 
    ```
-   git clone https://github.com/tarranprior/DevOps/Azure/Scripting/PowerShell/Active-Directory/Create_Users_From_CSV.git
+   git clone https://github.com/tarranprior/DevOps.git
    ```
 2. Launch PowerShell ISE with administrator privileges and *File > Open* the script.
 3. Set PowerShell's execution policy to unrestricted by running the following:

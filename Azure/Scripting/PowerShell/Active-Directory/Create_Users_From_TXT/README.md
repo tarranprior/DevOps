@@ -9,10 +9,10 @@ For example, the name "John Smith" creates an account with the credentials:
 This was written as part of a [blog post](https://tarranprior.com/writing/active-directory-homelab-using-virtualisation-powershell-automation) demonstrating how to setup and automate an active directory home lab for security research purposes.
 
 ### Usage
-1. Clone both files into a directory of your choice.
+1. Clone the files into a directory of your choice.
 
    ```
-   git clone https://github.com/tarranprior/DevOps/Azure/Scripting/PowerShell/Active-Directory/Create_Users_From_TXT.git
+   git clone https://github.com/tarranprior/DevOps.git
    ```
 2. Launch PowerShell ISE with administrator privileges and *File > Open* the script.
 3. Set PowerShell's execution policy to unrestricted by running the following:
